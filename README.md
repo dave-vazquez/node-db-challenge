@@ -40,11 +40,46 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+    Relational Databases are a collection of tables where each table utilizes specific data-points
+    stored in the table to relate itself to one or more separate tables in the database. 
+
+    SQL is the language used not only to perform various CRUD operations against an RDB, but
+    to build and modify the structure of the RDB as well.
+
 - [ ] Why do tables need a `primary key`?
+
+    Every record in a table must be accessible by a single or combination of unique key-value pair(s). 
+    These unique key-value pairs, or primary keys, are what uniquely identifies a record in a table.
+    
+    Without a primary key there is no way for single records to be queried using the various CRUD
+    operations. In addition there is no way that records in a primary-keyless can be referenced
+    by other tables as foreign attributes, at least not without the consequence of a foreign key
+    referencing two or more records in another table. (I’m not sure that’s even possible in a RDB,
+    but if it is, it’s likely to produce erroneous behavior that will have significant affects
+    on the way an application behaves.)
+
+    Primary keys are what makes relational-databases relational and what allows single rows to
+    be accessed. 
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+    Foreign Key.
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+    A separate table that relates the primary keys of one table to the primary keys of another.
+    These primary keys are stored in a many-to-many table as foreign keys and can be used in
+    in composite to enforce a primary key. They may also be uniquely identified by a separate
+    primary within that table.
+
+    A many-to-many table must contain rows with entirely unique key-value pairs. If it does not,
+    there is likely something wrong with the way the database has been designed and must be
+    examined closer to determine whether the many-to-many table is necessary, or if the database needs
+    to be refactored to properly support a many-to-many table. 
+
+    If a many-to-many table cannot produce unique key-value pairs by any means possible, it’s 
+    likely that the relationship between two tables has not been accurately determined, and 
+    another relationship must be considered.
 
 ## Minimum Viable Product
 
